@@ -1,4 +1,3 @@
-import { css } from '@emotion/core';
 import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
 import { GameObjectLayer, GameObjectRef } from './GameObject';
@@ -35,15 +34,6 @@ export const GameContext = React.createContext<GameContextValue>(null);
 interface Props extends Partial<GameContextValue['settings']> {
     children: React.ReactNode;
 }
-
-const styles = {
-    root: css`
-        position: relative;
-        user-select: none;
-        width: 100%;
-        height: 100%;
-    `,
-};
 
 export default function Game({
     movementDuration = 250,
@@ -145,7 +135,14 @@ export default function Game({
     };
 
     return (
-        <div css={styles.root}>
+        <div
+            style={{
+                width: '100%',
+                height: '100%',
+                position: 'relative',
+                userSelect: 'none',
+            }}
+        >
             <Canvas
                 camera={{
                     position: [0, 0, 32],

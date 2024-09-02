@@ -1,5 +1,5 @@
-import { css, Global } from '@emotion/core';
 import React from 'react';
+
 import AssetLoader from './@core/AssetLoader';
 import Game from './@core/Game';
 import Scene from './@core/Scene';
@@ -9,17 +9,6 @@ import OfficeScene from './scenes/OfficeScene';
 import OtherScene from './scenes/OtherScene';
 import soundData from './soundData';
 import spriteData from './spriteData';
-import globalStyles from './styles/global';
-
-const styles = {
-    root: (width: number, height: number) => css`
-        display: flex;
-        width: ${width - (width % 2)}px;
-        height: ${height - (height % 2)}px;
-        justify-content: center;
-        align-items: center;
-    `,
-};
 
 const urls = [
     ...Object.values(spriteData).map(data => data.src),
@@ -32,8 +21,16 @@ export default function App() {
 
     return (
         <>
-            <Global styles={globalStyles} />
-            <div css={styles.root(width, height)}>
+            <div
+                style={{
+                    width: width - (width % 2),
+                    height: height - (height % 2),
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    display: 'flex',
+                    backgroundColor: 'black',
+                }}
+            >
                 <Game cameraZoom={80}>
                     <AssetLoader urls={urls} placeholder="Loading assets ...">
                         <SceneManager defaultScene="office">
