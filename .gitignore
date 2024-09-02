@@ -5,3 +5,4 @@ package/
 /babel.config.js
 /.eslintrc*
 /.prettierrc*
+dist/
