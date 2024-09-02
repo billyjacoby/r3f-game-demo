@@ -16,6 +16,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@biomejs/biome": "^1.8.3",
     "@confy/core": "^0.5.2",
     "@confy/preset-react": "^0.3.2",
     "@confy/preset-typescript": "^0.2.0",

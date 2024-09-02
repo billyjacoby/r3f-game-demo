@@ -1,4 +1,4 @@
-import { InteractionCallback, InteractionEvent } from './Interactable';
+import type { InteractionCallback, InteractionEvent } from './Interactable';
 import useGameObjectEvent from './useGameObjectEvent';
 
 // this hook exists for legacy support

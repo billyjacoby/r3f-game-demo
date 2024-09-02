@@ -1,8 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 import { useFrame, useThree } from 'react-three-fiber';
 import * as THREE from 'three';
-import { Position } from '../@core/GameObject';
-import { SceneReadyEvent } from '../@core/Scene';
+import type { Position } from '../@core/GameObject';
+import type { SceneReadyEvent } from '../@core/Scene';
 import useGame from '../@core/useGame';
 import useGameEvent from '../@core/useGameEvent';
 import useGameObject from '../@core/useGameObject';

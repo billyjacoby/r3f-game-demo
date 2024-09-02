@@ -1,15 +1,15 @@
 import { useRef } from 'react';
-import useComponentRegistry, { ComponentRef } from './useComponentRegistry';
+import useComponentRegistry, { type ComponentRef } from './useComponentRegistry';
 import useGame from './useGame';
 import useGameObject from './useGameObject';
-import { GameObjectRef, Position } from './GameObject';
-import { PubSubEvent } from './utils/createPubSub';
+import type { GameObjectRef, Position } from './GameObject';
+import type { PubSubEvent } from './utils/createPubSub';
 
 export type WillInteractEvent = PubSubEvent<'will-interact', Position>;
 export type InteractionEvent = PubSubEvent<'interaction', GameObjectRef>;
 export type DidInteractEvent = PubSubEvent<'did-interact', Position>;
 
-export type InteractionCallback = (obj: GameObjectRef) => Promise<any> | void;
+export type InteractionCallback = (obj: GameObjectRef) => Promise<any> | undefined;
 
 export type InteractableRef = ComponentRef<
     'Interactable',

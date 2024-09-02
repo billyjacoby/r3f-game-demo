@@ -1,0 +1,28 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"files": {
+		"ignore": ["apps/expo/.expo/**", "apps/expo/dist/**"]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"noNonNullAssertion": { "level": "warn" }
+			},
+			"suspicious": {
+				"noExplicitAny": { "level": "warn" }
+			},
+			"correctness": {
+				"useExhaustiveDependencies": { "level": "warn" },
+				"noUnusedImports": { "level": "error" }
+			},
+			"nursery": {
+				"useSortedClasses": { "fix": "unsafe", "level": "warn" }
+			}
+		}
+	}
+}

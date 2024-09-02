@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import Collider from '../@core/Collider';
-import GameObject, { GameObjectProps } from '../@core/GameObject';
-import Interactable, { InteractionEvent } from '../@core/Interactable';
-import Sprite, { SpriteRef } from '../@core/Sprite';
+import GameObject, { type GameObjectProps } from '../@core/GameObject';
+import Interactable, { type InteractionEvent } from '../@core/Interactable';
+import Sprite, { type SpriteRef } from '../@core/Sprite';
 import useGameObject from '../@core/useGameObject';
 import useGameObjectEvent from '../@core/useGameObjectEvent';
 import waitForMs from '../@core/utils/waitForMs';

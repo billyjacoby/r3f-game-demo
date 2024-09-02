@@ -1,5 +1,5 @@
 import { HTML } from 'drei';
-import React from 'react';
+import type React from 'react';
 import { AssetLoaderProvider } from './AssetLoader';
 import { GameContext } from './Game';
 import useGame from './useGame';

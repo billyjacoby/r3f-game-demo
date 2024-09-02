@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-three-fiber';
-import { Position } from '../@core/GameObject';
+import type { Position } from '../@core/GameObject';
 import Graphic from '../@core/Graphic';
 import useGameObject from '../@core/useGameObject';
 import usePathfinding from '../@core/usePathfinding';

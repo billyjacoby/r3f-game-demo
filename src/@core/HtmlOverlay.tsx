@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { HTML, HTMLProps } from 'drei';
+import { useEffect, useRef } from 'react';
+import { HTML, type HTMLProps } from 'drei';
 import useGame from './useGame';
 
 export default function HtmlOverlay({ children, ...props }: HTMLProps) {

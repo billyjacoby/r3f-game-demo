@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction, useState, RefObject, useRef } from 'react';
-import { Position } from './GameObject';
-import Graphic, { GraphicProps } from './Graphic';
-import useComponentRegistry, { ComponentRef } from './useComponentRegistry';
+import { type Dispatch, type SetStateAction, useState, type RefObject, useRef } from 'react';
+import type { Position } from './GameObject';
+import Graphic, { type GraphicProps } from './Graphic';
+import useComponentRegistry, { type ComponentRef } from './useComponentRegistry';
 
 export type SpriteRef = ComponentRef<
     'Sprite',

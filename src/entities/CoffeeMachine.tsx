@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import Collider from '../@core/Collider';
-import GameObject, { GameObjectProps } from '../@core/GameObject';
-import Interactable, { InteractionEvent } from '../@core/Interactable';
+import GameObject, { type GameObjectProps } from '../@core/GameObject';
+import Interactable, { type InteractionEvent } from '../@core/Interactable';
 import { useSound } from '../@core/Sound';
-import Sprite, { SpriteRef } from '../@core/Sprite';
+import Sprite, { type SpriteRef } from '../@core/Sprite';
 import useGameObject from '../@core/useGameObject';
 import useGameObjectEvent from '../@core/useGameObjectEvent';
 import soundData from '../soundData';

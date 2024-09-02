@@ -1,11 +1,11 @@
 import anime from 'animejs';
 import { useEffect, useRef } from 'react';
-import { Position } from './GameObject';
+import type { Position } from './GameObject';
 import useCollisionTest from './useCollisionTest';
-import useComponentRegistry, { ComponentRef } from './useComponentRegistry';
+import useComponentRegistry, { type ComponentRef } from './useComponentRegistry';
 import useGame from './useGame';
 import useGameObject from './useGameObject';
-import { PubSubEvent } from './utils/createPubSub';
+import type { PubSubEvent } from './utils/createPubSub';
 import waitForMs from './utils/waitForMs';
 
 export type Direction = -1 | 0 | 1;

@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import Collider from '../@core/Collider';
 import GameObject from '../@core/GameObject';
 import Interactable from '../@core/Interactable';
 import ScenePortal from '../@core/ScenePortal';
 import Sprite from '../@core/Sprite';
-import TileMap, { TileMapResolver } from '../@core/TileMap';
+import TileMap, { type TileMapResolver } from '../@core/TileMap';
 import { mapDataString } from '../@core/utils/mapUtils';
 import CoffeeMachine from '../entities/CoffeeMachine';
 import PizzaPickup from '../entities/PizzaPickup';

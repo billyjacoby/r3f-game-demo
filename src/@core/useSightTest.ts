@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { GameObjectRef, Position } from './GameObject';
+import type { GameObjectRef, Position } from './GameObject';
 import useGameObject from './useGameObject';
-import useCollisionTest, { CollisionTestOptions } from './useCollisionTest';
+import useCollisionTest, { type CollisionTestOptions } from './useCollisionTest';
 import tileUtils from './utils/tileUtils';
 
 interface Options extends CollisionTestOptions {

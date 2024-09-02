@@ -1,5 +1,5 @@
 import EasyStar from 'easystarjs';
-import { Position } from '../GameObject';
+import type { Position } from '../GameObject';
 import { WALKABLE } from '../useMapSnapshot';
 
 interface PathOptions {

@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useRef } from 'react';
-import { SceneExitEvent, SceneInitEvent } from './Scene';
+import type { SceneExitEvent, SceneInitEvent } from './Scene';
 import useGame from './useGame';
 import useGameEvent from './useGameEvent';
 import useGameObject from './useGameObject';
 import useSceneManager from './useSceneManager';
-import { PubSubEvent } from './utils/createPubSub';
+import type { PubSubEvent } from './utils/createPubSub';
 import waitForMs from './utils/waitForMs';
 
 export type PreSaveGameEvent = PubSubEvent<'pre-save-game', void>;

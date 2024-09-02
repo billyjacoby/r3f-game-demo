@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useThree } from 'react-three-fiber';
 import * as THREE from 'three';
-import { Position } from './GameObject';
+import type { Position } from './GameObject';
 import useGameLoop from './useGameLoop';
 
 const vector3 = new THREE.Vector3();

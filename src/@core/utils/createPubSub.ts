@@ -3,7 +3,7 @@ export interface PubSubEvent<EventName = string, Data = any> {
     data: Data;
 }
 
-export type PubSubHandler<T = any> = (data: T) => void | Promise<any>;
+export type PubSubHandler<T = any> = (data: T) => undefined | Promise<any>;
 
 export default function createPubSub() {
     const events: { [name: string]: PubSubHandler[] } = {};

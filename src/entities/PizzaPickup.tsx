@@ -1,6 +1,6 @@
-import React from 'react';
-import Collider, { TriggerEvent } from '../@core/Collider';
-import GameObject, { GameObjectProps } from '../@core/GameObject';
+
+import Collider, { type TriggerEvent } from '../@core/Collider';
+import GameObject, { type GameObjectProps } from '../@core/GameObject';
 import { useSound } from '../@core/Sound';
 import Sprite from '../@core/Sprite';
 import useGameObject from '../@core/useGameObject';

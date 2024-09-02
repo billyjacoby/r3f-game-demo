@@ -1,5 +1,5 @@
-import { DependencyList, useEffect, useRef } from 'react';
-import { PubSubEvent } from './utils/createPubSub';
+import { type DependencyList, useEffect, useRef } from 'react';
+import type { PubSubEvent } from './utils/createPubSub';
 import useGameObject from './useGameObject';
 
 export default function useGameObjectEvent<T extends PubSubEvent>(

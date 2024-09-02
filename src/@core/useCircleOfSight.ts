@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Position } from './GameObject';
+import type { Position } from './GameObject';
 import useCollisionTest from './useCollisionTest';
 import tileUtils from './utils/tileUtils';
 

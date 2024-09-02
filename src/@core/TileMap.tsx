@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import type React from 'react';
+import { useEffect, useMemo } from 'react';
 import useGame from './useGame';
-import { PubSubEvent } from './utils/createPubSub';
+import type { PubSubEvent } from './utils/createPubSub';
 
 export type TileMapUpdateEvent = PubSubEvent<'tile-map-update', void>;
 

@@ -9,7 +9,7 @@ import React, {
 import { createPortal } from 'react-three-fiber';
 import useGame from './useGame';
 import useSceneManager from './useSceneManager';
-import { PubSubEvent } from './utils/createPubSub';
+import type { PubSubEvent } from './utils/createPubSub';
 
 export type SceneInitEvent = PubSubEvent<'scene-init', string>;
 export type SceneReadyEvent = PubSubEvent<'scene-ready', string>;
@@ -133,8 +133,8 @@ export default function Scene({ id, children }: Props) {
                 <group>
                     {/* just to ensure node.parent in a GO still remains within the scene */}
                     <group>
-                        <>{children}</>
-                        <>{instances}</>
+                        {children}
+                        {instances}
                     </group>
                 </group>
             </LevelContext.Provider>

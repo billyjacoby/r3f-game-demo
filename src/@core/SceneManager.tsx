@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { SceneExitEvent, ScenePreExitEvent } from './Scene';
+import type { SceneExitEvent, ScenePreExitEvent } from './Scene';
 import useGame from './useGame';
 import { SceneStoreProvider } from './useGameObjectStore';
 import waitForMs from './utils/waitForMs';

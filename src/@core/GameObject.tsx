@@ -1,20 +1,20 @@
 import React, {
-    Dispatch,
-    RefObject,
-    SetStateAction,
+    type Dispatch,
+    type RefObject,
+    type SetStateAction,
     useCallback,
     useLayoutEffect,
     useMemo,
     useRef,
     useState,
 } from 'react';
-import { ComponentRegistryUtils } from './useComponentRegistry';
+import type { ComponentRegistryUtils } from './useComponentRegistry';
 import useForceUpdate from './useForceUpdate';
 import useGame from './useGame';
 import useGameObject from './useGameObject';
 import useGameObjectStore from './useGameObjectStore';
 import useStateFromProp from './useStateFromProp';
-import createPubSub, { PubSub } from './utils/createPubSub';
+import createPubSub, { type PubSub } from './utils/createPubSub';
 
 export interface Position {
     x: number;

@@ -1,4 +1,4 @@
-import { SpriteProps } from './@core/Sprite';
+import type { SpriteProps } from './@core/Sprite';
 
 const spriteData: { [index: string]: SpriteProps } = {
     ui: {

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import findPath from './utils/findPath';
-import { Position } from './GameObject';
+import type { Position } from './GameObject';
 import useGameObject from './useGameObject';
 import useMapSnapshot from './useMapSnapshot';
 

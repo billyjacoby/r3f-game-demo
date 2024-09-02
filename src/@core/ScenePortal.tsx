@@ -1,7 +1,7 @@
 import { useThree } from 'react-three-fiber';
-import { MoveableRef, MoveDirection } from './Moveable';
-import { SceneInitEvent, SceneReadyEvent } from './Scene';
-import useComponentRegistry, { ComponentRef } from './useComponentRegistry';
+import type { MoveableRef, MoveDirection } from './Moveable';
+import type { SceneInitEvent, SceneReadyEvent } from './Scene';
+import useComponentRegistry, { type ComponentRef } from './useComponentRegistry';
 import useGame from './useGame';
 import useGameEvent from './useGameEvent';
 import useGameObject from './useGameObject';

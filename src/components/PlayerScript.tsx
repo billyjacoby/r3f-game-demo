@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Position } from '../@core/GameObject';
-import { InteractableRef } from '../@core/Interactable';
-import { MoveableRef } from '../@core/Moveable';
+import { useEffect, useState } from 'react';
+import type { Position } from '../@core/GameObject';
+import type { InteractableRef } from '../@core/Interactable';
+import type { MoveableRef } from '../@core/Moveable';
 import useCollisionTest from '../@core/useCollisionTest';
 import useGameLoop from '../@core/useGameLoop';
 import useGameObject from '../@core/useGameObject';

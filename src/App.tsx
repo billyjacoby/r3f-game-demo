@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 import AssetLoader from './@core/AssetLoader';
 import Game from './@core/Game';

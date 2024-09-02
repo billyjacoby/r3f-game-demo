@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { ColliderRef } from './Collider';
-import { Position } from './GameObject';
+import type { ColliderRef } from './Collider';
+import type { Position } from './GameObject';
 import useGame from './useGame';
 import useGameObject from './useGameObject';
 
@@ -36,7 +36,7 @@ export default function useCollisionTest({
                         gameObject.layer == null ||
                         (gameObject.layer !== 'wall' &&
                             gameObject.layer !== 'obstacle') ||
-                        (collider && collider.walkable)
+                        (collider?.walkable)
                     );
                 }
                 if (hit) {
@@ -45,7 +45,7 @@ export default function useCollisionTest({
                         (gameObject.layer !== 'wall' &&
                             gameObject.layer !== 'visible-wall' &&
                             gameObject.layer !== 'obstacle') ||
-                        (collider && collider.walkable)
+                        (collider?.walkable)
                     );
                 }
 

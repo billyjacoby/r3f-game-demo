@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { GameContext, GameContextValue } from './Game';
+import { GameContext, type GameContextValue } from './Game';
 
 export default function useGame() {
     return useContext(GameContext) as GameContextValue;

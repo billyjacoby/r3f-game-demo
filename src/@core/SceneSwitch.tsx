@@ -1,5 +1,5 @@
-import React from 'react';
-import Collider, { TriggerEvent } from './Collider';
+
+import Collider, { type TriggerEvent } from './Collider';
 import useGameObjectEvent from './useGameObjectEvent';
 import useSceneManager from './useSceneManager';
 

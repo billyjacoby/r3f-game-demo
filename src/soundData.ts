@@ -1,4 +1,4 @@
-import { SoundProps } from './@core/Sound';
+import type { SoundProps } from './@core/Sound';
 
 const soundData: { [index: string]: SoundProps } = {
     eating: {

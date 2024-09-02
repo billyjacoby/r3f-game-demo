@@ -1,7 +1,8 @@
-import React, { useCallback, useRef } from 'react';
-import GameObject, { Position } from '../@core/GameObject';
+import type React from 'react';
+import { useCallback, useRef } from 'react';
+import GameObject, { type Position } from '../@core/GameObject';
 import Graphic from '../@core/Graphic';
-import {
+import type {
     AttemptMoveEvent,
     DidMoveEvent,
     Direction,
@@ -11,7 +12,7 @@ import {
 } from '../@core/Moveable';
 import { useScene } from '../@core/Scene';
 import Sound from '../@core/Sound';
-import { SpriteRef } from '../@core/Sprite';
+import type { SpriteRef } from '../@core/Sprite';
 import useGameLoop from '../@core/useGameLoop';
 import useGameObject from '../@core/useGameObject';
 import useGameObjectEvent from '../@core/useGameObjectEvent';

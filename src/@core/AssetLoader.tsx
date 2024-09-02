@@ -1,11 +1,12 @@
-import React, {
-    createContext,
+import type React from 'react';
+import {
+    createContext,type 
     RefObject,
     useEffect,
     useLayoutEffect,
     useRef,
     useState,
-} from 'react';
+} from 'react'
 import HtmlOverlay from './HtmlOverlay';
 import useStateFromProp from './useStateFromProp';
 

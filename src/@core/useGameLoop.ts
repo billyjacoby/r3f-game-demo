@@ -10,7 +10,7 @@ export default function useGameLoop(callback: FrameRequestCallback, condition = 
     const callbackRef = useRef<FrameRequestCallback>();
     callbackRef.current = callback;
     active.current = !paused && condition;
-    if (getRef && getRef().disabled) active.current = false;
+    if (getRef?.().disabled) active.current = false;
 
     useFrame(({ clock }) => {
         const time = clock.oldTime; // clock.elapsedTime / 1000;

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { Position } from './GameObject';
-import { InteractableRef } from './Interactable';
+import type { Position } from './GameObject';
+import type { InteractableRef } from './Interactable';
 import useGame from './useGame';
 import useGameObject from './useGameObject';
 

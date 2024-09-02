@@ -1,7 +1,7 @@
-import React, { forwardRef, memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import { forwardRef, memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useUpdate } from 'react-three-fiber';
 import * as THREE from 'three';
-import { Position } from './GameObject';
+import type { Position } from './GameObject';
 import useAsset from './useAsset';
 import useGameLoop from './useGameLoop';
 

@@ -1,5 +1,5 @@
-import { Position } from '../GameObject';
-import { TileMapData, TileMapDataValue } from '../TileMap';
+import type { Position } from '../GameObject';
+import type { TileMapData, TileMapDataValue } from '../TileMap';
 import tileUtils from './tileUtils';
 
 export type MapDataCallback = (position: Position) => TileMapDataValue;
