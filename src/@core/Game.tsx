@@ -1,3 +1,4 @@
+import { Canvas } from "@react-three/fiber";
 import React, {
 	type Dispatch,
 	type SetStateAction,
@@ -5,7 +6,6 @@ import React, {
 	useMemo,
 	useState,
 } from "react";
-import { Canvas } from "react-three-fiber";
 import type { GameObjectLayer, GameObjectRef } from "./GameObject";
 import type { SceneExitEvent } from "./Scene";
 import createPubSub, { type PubSub } from "./utils/createPubSub";
