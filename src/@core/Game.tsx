@@ -15,8 +15,8 @@ export type GameObjectRegistry<T = GameObjectRef> = Map<symbol | string, T>;
 export interface GameObjectRegistryUtils {
 	registerGameObject: (identifier: symbol, ref: GameObjectRef) => void;
 	unregisterGameObject: (identifier: symbol, ref: GameObjectRef) => void;
-	findGameObjectById: (id: symbol) => GameObjectRef;
-	findGameObjectByName: (name: string) => GameObjectRef;
+	findGameObjectById: (id: symbol) => GameObjectRef | undefined;
+	findGameObjectByName: (name: string) => GameObjectRef | undefined;
 	findGameObjectsByXY: (x: number, y: number) => GameObjectRef[];
 	findGameObjectsByLayer: (layer: GameObjectLayer) => GameObjectRef[];
 	// findGameObjects: (props: Partial<GameObjectProps>) => GameObjectRef[];
@@ -35,7 +35,7 @@ export interface GameContextValue extends GameObjectRegistryUtils, PubSub {
 	getGameState: (key: string | symbol) => any;
 }
 
-export const GameContext = React.createContext<GameContextValue>(null);
+export const GameContext = React.createContext<GameContextValue | null>(null);
 
 interface Props extends Partial<GameContextValue["settings"]> {
 	children: React.ReactNode;
@@ -61,10 +61,10 @@ export default function Game({
 
 	const storeUtils = useMemo(
 		() => ({
-			setGameState(key, value) {
+			setGameState(key: string | symbol, value: string) {
 				gameStore.set(key, value);
 			},
-			getGameState(key) {
+			getGameState(key: string | symbol) {
 				return gameStore.get(key);
 			},
 		}),
@@ -72,7 +72,7 @@ export default function Game({
 	);
 
 	useEffect(() => {
-		return pubSub.subscribe<SceneExitEvent>("scene-exit", () => {
+		return pubSub.subscribe<SceneExitEvent>("scene-exit", async () => {
 			registryById.clear();
 			registryByName.clear();
 			registryByXY.clear();
@@ -86,7 +86,7 @@ export default function Game({
 				// register by id
 				registryById.set(identifier, ref);
 				// register by name
-				registryByName.set(ref.name, ref);
+				ref?.name && registryByName.set(ref.name, ref);
 				// register by x, y
 				const { transform } = ref;
 				const xy = `${transform.x},${transform.y}`;
@@ -94,22 +94,24 @@ export default function Game({
 				xyList.push(ref);
 				registryByXY.set(xy, xyList);
 				// register by layer
-				const layerList = registryByLayer.get(ref.layer) || [];
+				const layerList = ref.layer ? registryByLayer.get(ref.layer) || [] : [];
 				layerList.push(ref);
-				registryByLayer.set(ref.layer, layerList);
+				ref.layer && registryByLayer.set(ref.layer, layerList);
 			},
 			unregisterGameObject(identifier, ref) {
 				// unregister by id
 				registryById.delete(identifier);
 				// unregister by name
-				registryByName.delete(ref.name);
+				ref?.name && registryByName.delete(ref.name);
 				// unregister by x, y
 				const { transform } = ref;
 				const xy = `${transform.x},${transform.y}`;
 				const xyList = registryByXY.get(xy);
 				xyList?.splice(xyList.indexOf(ref), 1);
 				// unregister by layer
-				const layerList = registryByLayer.get(ref.layer);
+				const layerList = ref.layer
+					? registryByLayer.get(ref.layer)
+					: undefined;
 				layerList?.splice(layerList.indexOf(ref), 1);
 			},
 			findGameObjectById(id) {
@@ -161,9 +163,6 @@ export default function Game({
 					far: 64,
 				}}
 				orthographic
-				noEvents
-				gl2
-				// @ts-ignore
 				gl={{ antialias: false }}
 				onContextMenu={(e) => e.preventDefault()}
 			>

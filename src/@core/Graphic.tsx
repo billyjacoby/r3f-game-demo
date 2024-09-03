@@ -1,5 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import {
+	type RefObject,
 	forwardRef,
 	memo,
 	useCallback,
@@ -27,7 +28,8 @@ export interface GraphicProps {
 	offset?: Position;
 	basic?: boolean;
 	blending?: THREE.Blending;
-	magFilter?: THREE.TextureFilter;
+	magFilter?: THREE.MagnificationTextureFilter;
+	minFilter?: THREE.MinificationTextureFilter;
 	onIteration?: () => void;
 }
 
@@ -65,12 +67,12 @@ export default memo(
 		}
 
 		const image = useAsset(src) as HTMLImageElement;
-		const textureRef = useRef<THREE.Texture>(null);
+		const textureRef = useRef<THREE.Texture | null>(null);
 		const mounted = useRef(true);
-		const interval = useRef<number>();
+		const interval = useRef<number | null>(null);
 		const prevFrame = useRef<number>(-1);
 		const frame = useRef(0);
-		const frames = sheet[state];
+		const frames = sheet[state] || [[0, 0]];
 		const [firstFrame, lastFrame = firstFrame] = frames;
 		const frameLength = lastFrame[0] + 1 - firstFrame[0];
 
@@ -88,7 +90,7 @@ export default memo(
 		// initial frame update
 		useEffect(() => handleFrameUpdate(), [handleFrameUpdate]);
 
-		useFrame((state, delta) => {
+		useFrame((state) => {
 			if (!mounted.current || frameLength <= 1) return;
 			if (interval.current == null) interval.current = state.clock.elapsedTime;
 
@@ -105,7 +107,7 @@ export default memo(
 			}
 		});
 
-		const iterationCallback = useRef<typeof onIteration>();
+		const iterationCallback = useRef(onIteration);
 		iterationCallback.current = onIteration;
 		// call onIteration on cleanup
 		useEffect(
@@ -133,7 +135,7 @@ export default memo(
 			[opacity, blending, color],
 		);
 
-		const textureProps = useMemo<Partial<THREE.Texture>>(() => {
+		const textureProps = useMemo(() => {
 			const size = {
 				x: image.width / frameWidth,
 				y: image.height / frameHeight,
@@ -142,24 +144,33 @@ export default memo(
 				image,
 				repeat: new THREE.Vector2(1 / size.x, 1 / size.y),
 				magFilter,
-				minFilter: THREE.LinearMipmapLinearFilter,
+				minFilter: THREE.LinearMipmapLinearFilter as THREE.TextureFilter,
 			};
 		}, [frameHeight, frameWidth, image, magFilter]);
 
 		return (
 			<mesh
-				ref={ref}
+				ref={ref as RefObject<THREE.Mesh>}
 				position={[offset.x, offset.y, -offset.y / 100]}
 				scale={[flipX * scale, scale, 1]}
 				geometry={geometry}
 			>
 				{basic ? (
 					<meshBasicMaterial attach="material" {...materialProps}>
-						<texture ref={textureRef} attach="map" {...textureProps} />
+						<texture
+							ref={textureRef as RefObject<THREE.Texture>}
+							attach="map"
+							{...textureProps}
+						/>
 					</meshBasicMaterial>
 				) : (
 					<meshLambertMaterial attach="material" {...materialProps}>
-						<texture ref={textureRef} attach="map" {...textureProps} />
+						<texture
+							ref={textureRef as RefObject<THREE.Texture>}
+							attach="map"
+							{...textureProps}
+							minFilter={THREE.LinearMipmapLinearFilter}
+						/>
 					</meshLambertMaterial>
 				)}
 			</mesh>

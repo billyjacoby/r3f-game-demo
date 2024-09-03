@@ -7,6 +7,7 @@ import React, {
 	useRef,
 	useState,
 } from "react";
+import type * as THREE from "three";
 import useGame from "./useGame";
 import useSceneManager from "./useSceneManager";
 import type { PubSubEvent } from "./utils/createPubSub";
@@ -28,7 +29,7 @@ interface SceneContextValue {
 	setLevel: (level: number) => void;
 }
 
-const SceneContext = React.createContext<SceneContextValue>(null);
+const SceneContext = React.createContext<SceneContextValue | null>(null);
 
 export function useScene() {
 	return useContext(SceneContext) as SceneContextValue;
@@ -41,7 +42,7 @@ export interface LevelContextValue {
 	enterNextLevel: () => void;
 }
 
-export const LevelContext = React.createContext<LevelContextValue>(null);
+export const LevelContext = React.createContext<LevelContextValue | null>(null);
 
 export function useLevel() {
 	return useContext(LevelContext) as LevelContextValue;
@@ -60,7 +61,7 @@ export default function Scene({ id, children }: Props) {
 	const { currentScene, currentLevel, prevLevel, resetScene, setLevel } =
 		useSceneManager();
 	const [instances, setInstances] = useState<React.ReactElement[]>([]);
-	const idleCallback = useRef();
+	const idleCallback = useRef<number>();
 
 	const initEvents = useCallback(async () => {
 		await publish<SceneInitEvent>("scene-init", id);
@@ -78,7 +79,9 @@ export default function Scene({ id, children }: Props) {
 			instantiate(newElement, portalNode) {
 				const key = newElement.key == null ? Math.random() : newElement.key;
 				const instance = portalNode
-					? createPortal(newElement, portalNode, null, key)
+					? //! This changed, not quite sure if this update properly fixes the update or not
+						// ? createPortal(newElement, portalNode, null, key)
+						createPortal(newElement, portalNode)
 					: React.cloneElement(newElement, { key });
 				setInstances((current) => [...current, instance as React.ReactElement]);
 				return () => {
@@ -119,7 +122,10 @@ export default function Scene({ id, children }: Props) {
 			// leaving scene
 			setInstances([]);
 		}
-		return () => window.cancelIdleCallback(idleCallback.current);
+		return () =>
+			idleCallback.current
+				? window.cancelIdleCallback(idleCallback.current)
+				: undefined;
 	}, [currentScene, id, initEvents]);
 
 	// skip rendering scene content

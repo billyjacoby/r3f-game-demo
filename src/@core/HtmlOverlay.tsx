@@ -5,7 +5,7 @@ import useGame from "./useGame";
 
 export default function HtmlOverlay({ children, ...props }: HtmlProps) {
 	const { paused } = useGame();
-	const node = useRef<HTMLDivElement>();
+	const node = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		if (node.current?.parentElement) {

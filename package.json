@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
+		"type-check": "tsc --noEmit --p tsconfig.app.json",
 		"dev": "vite",
 		"build": "vite build",
 		"serve": "serve dist",
